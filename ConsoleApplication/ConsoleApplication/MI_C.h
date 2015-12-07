@@ -18,22 +18,25 @@ public:
 class ParameterC2
 {
 public:
-	ParameterC2(){}
+	ParameterC2()
+	{
+
+	}
 	virtual ~ParameterC2(){}
 };
 
 class ParameterC3 : public ParameterC1, public ParameterC2
 {
 public:
-	ParameterC3();
-	virtual ~ParameterC3();
+	ParameterC3()
+	{
+		_id = 3;
+	};
+	virtual ~ParameterC3(){};
 };
 
-typedef void (A::*FUNA)(ParameterC1);
+typedef void (A::*FUNA)(ParameterC1*);
 #define fun_selector(fun) (FUNA)(&fun)
-
-typedef void (B::*FUNB)(int);
-#define funb_selector(fun) (FUNB)(&fun)
 
 class A
 {
@@ -56,7 +59,7 @@ public:
 	C();
 	virtual ~C();
 
-	void funC(ParameterC3);
+	void funC(ParameterC1*);
 };
 
 class MI_C
@@ -66,7 +69,6 @@ public:
 	virtual ~MI_C();
 
 	void runFun(A *, FUNA);
-	void runFunB(B *, FUNB);
 };
 
 #endif
