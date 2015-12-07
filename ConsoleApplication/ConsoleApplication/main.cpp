@@ -7,7 +7,7 @@ void main()
 	C c;
 	B b;
 	mic.runFun(&c, fun_selector(C::funC));
-	mic.runFunB(&b, funb_selector(C::funC));
+	//mic.runFunB(&b, funb_selector(C::funC));
 	
 	int in;
 	std::cin>>in;

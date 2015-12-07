@@ -2,8 +2,34 @@
 #define _MI_C_
 
 class A;
+class B;
 
-typedef void (A::*FUNA)(int);
+class ParameterC1
+{
+public:
+	ParameterC1()
+	{
+		_id = 1;
+	}
+	virtual ~ParameterC1(){}
+	int _id;
+};
+
+class ParameterC2
+{
+public:
+	ParameterC2(){}
+	virtual ~ParameterC2(){}
+};
+
+class ParameterC3 : public ParameterC1, public ParameterC2
+{
+public:
+	ParameterC3();
+	virtual ~ParameterC3();
+};
+
+typedef void (A::*FUNA)(ParameterC1);
 #define fun_selector(fun) (FUNA)(&fun)
 
 typedef void (B::*FUNB)(int);
@@ -30,7 +56,7 @@ public:
 	C();
 	virtual ~C();
 
-	void funC(int);
+	void funC(ParameterC3);
 };
 
 class MI_C

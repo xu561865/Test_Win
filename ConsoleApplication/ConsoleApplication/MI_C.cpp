@@ -25,9 +25,9 @@ C::~C()
 {
 }
 
-void C::funC(int i)
+void C::funC(ParameterC3 p1)
 {
-	std::cout<<"func "<<i<<std::endl;
+	std::cout<<"ParameterC3's p1 = "<<p1._id<<std::endl;
 }
 
 MI_C::MI_C()
@@ -40,5 +40,6 @@ MI_C::~MI_C()
 
 void MI_C::runFun(A *pA, FUNA fun)
 {
-	(pA->*fun)(3);
+	ParameterC1 p1;
+	(pA->*fun)(p1);
 }
